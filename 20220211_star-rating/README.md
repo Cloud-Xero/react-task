@@ -5,7 +5,7 @@ React で星評価の機能を実装してください
 
 ### 課題詳細
 - 星のアイコンは react-icons パッケージをインストールして使用する
-  - ```bash npm i react-icons```
+  - ```npm i react-icons```
 - コンポーネントは、StarRating.jsx とする
 - ユーザーの操作により動的に色を設定できるようにする
   - 星の色はデフォルトで grey、選択すると red
