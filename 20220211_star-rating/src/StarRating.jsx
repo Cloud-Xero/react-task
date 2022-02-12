@@ -3,19 +3,23 @@ import { FaStar } from "react-icons/fa";  // モジュールをinstallしない�
 
 export const StarRating = () => {
 
-  const [count, setCount] = useState(3)
+  const [count, setCount] = useState(2)
+
+  const number = [1,2,3,4,5]
 
   return (
     <>
-      <FaStar color="red" onClick={() => setCount(1)} />
-      <FaStar color={count >1 ? "red" : "gray"} onClick={() => setCount(2)} />
-      <FaStar color={count >2 ? "red" : "gray"} onClick={() => setCount(3)} />
-      <FaStar color={count >3 ? "red" : "gray"} onClick={() => setCount(4)} />
-      <FaStar color={count >4 ? "red" : "gray"} onClick={() => setCount(5)} />
+      {number.map((number) =>{
+         return( 
+
+          <FaStar color={count > number-1 ? "red" : "gray"} id={number} onClick={() => setCount(number)} />
+         )
+      })}
       <p>
-         {count} of 5 stars
+         {count} of {number.length} stars
          
-      </p>
+      </p> 
+     
     </>
   );
 };
