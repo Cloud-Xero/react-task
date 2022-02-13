@@ -1,16 +1,35 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";  // モジュールをinstallしないと使用できません
+import { FaCalculator, FaStar } from "react-icons/fa";  // モジュールをinstallしないと使用できません
+
+import { useState } from "react";
 
 export const StarRating = () => {
+
+  // Stateの定義
+  const [rating, setRating] = useState(0); 
+
+  // starの数量を設定
+  const elementCount = 5
+  const elements = [] 
+  for (let i = 0; i < elementCount; i++) {
+    elements.push(i + 1);
+  }
+
   return (
     <>
-      <FaStar color="red" />
-      <FaStar color="red" />
-      <FaStar color="red" />
-      <FaStar color="red" />
-      <FaStar color="red" />
+      <div className="stars-container">
+        {elements.map((num) => {
+          return(
+            <FaStar
+              id={num}
+              color={rating >= num ? "red" : "gray"}
+              onClick={() => setRating(num)}
+            />
+          )
+        })}
+      </div>
       <p>
-        {/* [赤色の数をここに出力] of 5 stars */}
+        {rating} of {elementCount} stars
       </p>
     </>
   );
