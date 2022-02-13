@@ -8,28 +8,24 @@ export const StarRating = () => {
   // Stateの定義
   const [rating, setRating] = useState(0); 
 
-  // starの数量を設定
-  const elementCount = 5
-  const elements = [] 
-  for (let i = 0; i < elementCount; i++) {
-    elements.push(i + 1);
-  }
+  // 配列を定義
+  const elements = [...Array(10)];
 
   return (
     <>
       <div className="stars-container">
-        {elements.map((num) => {
+        {elements.map((_, index) => {
           return(
             <FaStar
-              id={num}
-              color={rating >= num ? "red" : "gray"}
-              onClick={() => setRating(num)}
+              id={index + 1}
+              color={rating > index ? "red" : "gray"}
+              onClick={() => setRating(index + 1)}
             />
           )
         })}
       </div>
       <p>
-        {rating} of {elementCount} stars
+        {rating} of {elements.length} stars
       </p>
     </>
   );
