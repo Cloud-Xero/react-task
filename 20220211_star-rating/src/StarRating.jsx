@@ -1,16 +1,19 @@
-import React from "react";
-import { FaStar } from "react-icons/fa";  // モジュールをinstallしないと使用できません
+import React, { useState } from "react";
+import { FaStar } from "react-icons/fa";
 
-export const StarRating = () => {
+export const StarRating = ({ totalStarts = 5 }) => {
+  const [selectedStarts, setSelectedStars] = useState(0);
   return (
     <>
-      <FaStar color="red" />
-      <FaStar color="red" />
-      <FaStar color="red" />
-      <FaStar color="red" />
-      <FaStar color="red" />
+      {[...Array(totalStarts)].map((_, i) => (
+        <FaStar
+          key={i}
+          color={selectedStarts > i ? "red" : "grey"}
+          onClick={() => setSelectedStars(i + 1)}
+        />
+      ))}
       <p>
-        {/* [赤色の数をここに出力] of 5 stars */}
+        {selectedStarts} of {totalStarts} stars
       </p>
     </>
   );
